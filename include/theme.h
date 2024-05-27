@@ -27,6 +27,7 @@ struct theme_snapping_overlay {
 
 struct theme {
 	int border_width;
+	int button_width;
 	int padding_height;
 	int title_height;
 	int menu_overlap_x;

@@ -108,7 +108,7 @@ create_hover_fallback(struct theme *theme, const char *icon_name,
 	int icon_width = cairo_image_surface_get_width(icon.surface);
 	int icon_height = cairo_image_surface_get_height(icon.surface);
 
-	int width = SSD_BUTTON_WIDTH;
+	int width = theme->button_width;
 	int height = theme->title_height;
 
 	if (width && height) {
@@ -469,6 +469,7 @@ static void
 theme_builtin(struct theme *theme, struct server *server)
 {
 	theme->border_width = 1;
+	theme->button_width = 32;
 	theme->padding_height = 3;
 	theme->title_height = INT_MIN;
 	theme->menu_overlap_x = 0;
@@ -590,6 +591,9 @@ entry(struct theme *theme, const char *key, const char *value)
 	 */
 	if (match_glob(key, "border.width")) {
 		theme->border_width = atoi(value);
+	}
+	if (match_glob(key, "button.width")) {
+		theme->button_width = atoi(value);
 	}
 	if (match_glob(key, "padding.height")) {
 		theme->padding_height = atoi(value);
@@ -1066,7 +1070,7 @@ create_corners(struct theme *theme)
 	struct wlr_box box = {
 		.x = 0,
 		.y = 0,
-		.width = SSD_BUTTON_WIDTH + theme->border_width,
+		.width = theme->button_width + theme->border_width,
 		.height = theme->title_height + theme->border_width,
 	};
 

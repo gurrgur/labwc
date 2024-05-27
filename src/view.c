@@ -601,7 +601,7 @@ view_adjust_size(struct view *view, int *w, int *h)
 	 * This is currently always the case for xdg-shell views.
 	 */
 	if (hints.min_width < 1) {
-		hints.min_width = LAB_MIN_VIEW_WIDTH;
+		hints.min_width = view->server->theme->button_width * SSD_BUTTON_COUNT;
 	}
 	if (hints.min_height < 1) {
 		hints.min_height = LAB_MIN_VIEW_HEIGHT;

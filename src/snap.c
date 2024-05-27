@@ -228,12 +228,12 @@ snap_shrink_to_next_edge(struct view *view,
 	 */
 	switch (direction) {
 	case VIEW_EDGE_RIGHT:
-		geo->width = MAX(geo->width / 2, LAB_MIN_VIEW_WIDTH);
+		geo->width = MAX(geo->width / 2, view->server->theme->button_width * SSD_BUTTON_COUNT);
 		geo->x = view->pending.x + view->pending.width - geo->width;
 		resize_edges = WLR_EDGE_LEFT;
 		break;
 	case VIEW_EDGE_LEFT:
-		geo->width = MAX(geo->width / 2, LAB_MIN_VIEW_WIDTH);
+		geo->width = MAX(geo->width / 2, view->server->theme->button_width * SSD_BUTTON_COUNT);
 		resize_edges = WLR_EDGE_RIGHT;
 		break;
 	case VIEW_EDGE_DOWN:

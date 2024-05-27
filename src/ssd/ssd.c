@@ -230,10 +230,10 @@ ssd_update_geometry(struct ssd *ssd)
 	int eff_width = current.width;
 	int eff_height = view_effective_height(ssd->view, /* use_pending */ false);
 
-	if (eff_width > 0 && eff_width < LAB_MIN_VIEW_WIDTH) {
+	if (eff_width > 0 && eff_width < ssd->view->server->theme->button_width * SSD_BUTTON_COUNT) {
 		/*
 		 * Prevent negative values in calculations like
-		 * `width - SSD_BUTTON_WIDTH * SSD_BUTTON_COUNT`
+		 * `width - theme->button_width * SSD_BUTTON_COUNT`
 		 */
 		wlr_log(WLR_ERROR,
 			"view width is smaller than its minimal value");
